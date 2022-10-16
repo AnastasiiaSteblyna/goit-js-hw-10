@@ -13,17 +13,25 @@ export function renderCountry(country) {
     const markup = country
       .map(
         c =>
-          `<li><img src= ${c.flags.svg} alt= ${c.name.common} width=500/></li>`
+          `<li><img src= ${c.flags.svg} alt= ${c.name.common} width=50/>${c.name.common}</li>`
       )
       .join('');
 
     refs.countryList.insertAdjacentHTML('beforeend', markup);
   } else if (country.length === 1) {
     refs.countryList.innerHTML = '';
+
     const markup = country
       .map(
         c =>
-          `<li><img src= ${c.flags.svg} alt= ${c.name.common} width=500/></li>`
+          `<div class='box'><h1><img class='big-image' src= ${
+            c.flags.svg
+          } alt= ${c.name.common} width=50/>${c.name.common}</h1>
+          <ul><li> Capital: ${c.capital} </li><li> Population: ${
+            c.population
+          } </li><li> Languages: ${Object.values(c.languages).join(
+            ', '
+          )}</li></ul></div>`
       )
       .join('');
 
